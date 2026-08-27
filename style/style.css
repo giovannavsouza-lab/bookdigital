@@ -1,0 +1,13 @@
+body{}
+
+.capa-livro{
+ background-color: #5c1418;
+ padding: 50px 40px;
+ border-radius: 5px;
+ box-shadow: 0 5px 50px rgba(0,0,0,.5);
+}
+
+.capa-conteiner{
+
+    
+}
