@@ -1,37 +1,103 @@
 <!DOCTYPE html>
-<html>
-    <link rel="stylesheet" href="./style/style.css" >
+<!--
+    ARQUIVO: index.html
+    PROJETO: Os Contos de Beedle, o Bardo
+    DESCRIÇÃO: Estrutura HTML da página. Todo o estilo visual está em
+    "css/style.css" e toda a lógica/interatividade está em "js/script.js".
+
+    ESTRUTURA GERAL DA PÁGINA:
+      1. <head>         -> metadados e link para a folha de estilos
+      2. #tela-capa      -> carátula inicial do livro (aparece primeiro)
+      3. #tela-principal -> livro aberto (menu de contos + leitor)
+      4. <script>        -> importação da lógica em js/script.js
+-->
+<html lang="pt-PT">
 <head>
-    <meta charset="utf-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teste teste</title>
-</head> 
+    <title>Os Contos de Beedle, o Bardo</title>
+
+    <!-- Folha de estilos externa: contém as skins das casas, a capa,
+         o livro aberto, o menu de contos e o leitor -->
+    <link rel="stylesheet" href="./style/style.css">
+</head>
 <body>
-    <!-- TELA DA capa -->
+
+    <!-- ======================================================================
+         1. TELA DA CAPA
+         Primeira coisa que o usuário vê. Some (display:none) assim que o
+         usuário clica em "Abrir Livro ✨" (ver função abrirLivro() no JS).
+         ====================================================================== -->
     <div id="tela-capa" class="capa-container">
-<div class="capa-livro">
-    <h1>Cabbin 17</h1>
-    <p>mitos</p>
-    <button class="btn-abrir" onclick="abrirLivro()">Abrir Livro</button>
-    </div>
-    </div>
+        <div class="capa-livro">
+            <div class="simbolo-reliquias">⚯⚡</div>
+            <h1>Os Contos de<br>Beedle, o Bardo</h1>
+            <div class="subtitulo">Histórias do Cancioneiro Bruxo</div>
 
-    <!-- TELA DA inicial -->
-
-    <div id="tela-principal" class="container" style="display: none;">
-    <div class="topo-acoes">
-        <button class="btn-voltar" onclick="voltarInicio()">Voltar</button>
-        <div class="seletor-casas">
-                <span>Sua benção:</span>
-                <button class="btn-skin skin-apo" title="Apollo" onclick="mudarDeus('skin-apollo')"></button>
-                <button class="btn-skin skin-ath" title="Athena" onclick="mudarDeus('skin-athenas')"></button>
-                <button class="btn-skin skin-her" title="Hermes" onclick="mudarDeus('skin-hermes')"></button>
-                <button class="btn-skin skin-afro" title="Afrodite" onclick="mudarDeus('skin-afrodite')"></button>
+            <div class="creditos">
+                Traduzido das runas antigas por Hermione Granger<br>
+                Com notas explicativas do Diretor Alvo Dumbledore
             </div>
-    </div>
-    </div>
-   
 
-<script src="./js/script.js"></script>
-</body>   
+            <!-- Ao clicar, chama abrirLivro() definida em js/script.js -->
+            <button class="btn-abrir" onclick="abrirLivro()">Abrir Livro ✨</button>
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         2. TELA PRINCIPAL (Livro Aberto)
+         Fica oculta (style="display:none") até o usuário abrir o livro.
+         Contém: topo de ações (fechar + seletor de skins), cabeçalho,
+         menu de contos e área de leitura.
+         ====================================================================== -->
+    <div id="tela-principal" class="container" style="display: none;">
+
+        <!-- Barra superior: botão de fechar o livro + seletor de skins das casas -->
+        <div class="topo-acoes">
+            <!-- Ao clicar, chama voltarInicio() definida em js/script.js -->
+            <button class="btn-voltar" onclick="voltarInicio()">存放 Fechar Livro</button>
+
+            <!-- Cada botão redondo aplica uma skin diferente via mudarCasa() -->
+            <div class="seletor-casas">
+                <span>Skin da Casa:</span>
+                <button class="btn-skin skin-grif" title="Grifinória" onclick="mudarCasa('skin-grifinoria')"></button>
+                <button class="btn-skin skin-son" title="Sonserina" onclick="mudarCasa('skin-sonserina')"></button>
+                <button class="btn-skin skin-corv" title="Corvinal" onclick="mudarCasa('skin-corvinal')"></button>
+                <button class="btn-skin skin-lufa" title="Lufa-Lufa" onclick="mudarCasa('skin-lufa-lufa')"></button>
+            </div>
+        </div>
+
+        <!-- Cabeçalho com o título do livro e instrução de uso -->
+        <header>
+            <h1 id="tituloPrincipal">Os Contos de Beedle, o Bardo</h1>
+            <p>Selecione uma história para iniciar a leitura mágica</p>
+        </header>
+
+        <!-- Conteúdo principal: menu de contos (à esquerda) + leitor (à direita) -->
+        <div class="main-content">
+
+            <!-- Preenchido dinamicamente pela função carregarMenu() no JS,
+                 com um botão para cada conto do array "contos" -->
+            <div class="menu-contos" id="menuContos"></div>
+
+            <!-- Área onde o texto do conto selecionado é exibido.
+                 Os textos abaixo são apenas o estado inicial (nenhum conto
+                 selecionado ainda); são substituídos por exibirConto() no JS -->
+            <div class="leitor-conto" id="leitorConto">
+                <h2 id="contoTitulo">Selecione uma história</h2>
+                <p id="contoTexto">Clique em um dos contos clássicos ao lado para ler o resumo e as observações arquivadas por Hogwarts.</p>
+                <div id="contoNota" class="nota-alvo" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Rodapé fixo do livro aberto -->
+        <footer>
+            <p>Biblioteca de Hogwarts • Feito com magia simples ⚯⚡</p>
+        </footer>
+    </div>
+
+    <!-- Script externo: contém os dados dos contos e toda a lógica de
+         interação (troca de skin, abrir/fechar livro, exibir contos) -->
+    <script src="js/script.js"></script>
+</body>
 </html>

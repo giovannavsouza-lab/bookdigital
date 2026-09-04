@@ -1,88 +1,40 @@
-body{
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #5c1418;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+/* ==========================================================================
+   ARQUIVO: style.css
+   PROJETO: Os Contos de Beedle, o Bardo
+   DESCRIÇÃO: Folha de estilos responsável por toda a aparência visual do
+   "livro digital": a capa, o livro aberto, o menu de contos, o leitor de
+   texto e as 4 "skins" temáticas das casas de Hogwarts.
 
-.capa-livro h1{
-   
-    width: 320px;
-    padding: 60px 30px;
-    background-color: antiquewhite;
-    border:2px solid #c8a24a ;
-    border-radius: 8px;
-    text-align: center;
-    
-   }
-.capa-livro{
- background-color: #5c1418;
- padding: 50px 40px;
- border-radius: 10px;
- border: 5px double #d4af37;
- box-shadow: 0 15px 40px rgba(0,0,0,0.9);
- text-align: center;
- max-width: 450px;
- width: 100%;
- box-sizing:border-box;
- transition: all 0.5sease;
-}
+   ÍNDICE DESTE ARQUIVO:
+     1. Variáveis de Cores (Skins das Casas)
+     2. Estilos Gerais (body / fundo da página)
+     3. Estilo da Capa (Carátula do livro)
+     4. Estilo da Página Interna (Livro Aberto)
+        4.1 Cabeçalho interno (topo com botão fechar + seletor de casas)
+        4.2 Seletor de skins das casas (bolinhas coloridas)
+        4.3 Cabeçalho do conteúdo (título e subtítulo)
+        4.4 Layout em grelha (menu + leitor)
+        4.5 Menu de contos (lista de botões à esquerda)
+        4.6 Área de leitura do conto selecionado
+        4.7 Nota de Dumbledore
+        4.8 Rodapé
+   ========================================================================== */
 
-.capa-container{
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-padding: 20px;
-box-sizing: border-box;
 
-}
-
-.container{
-    width: 90%;
-    max-width: 900px;
-    background-color: var(--bg-principal);
-    color: var(--texto-prinicpal);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    border: 3px double var(--borda-ouro);
-    box-sizing: border-box;
-    position: relative;
-    transition: background-color 0.5s ease, color 0.5s ease, border-color ease ;
-
-}
-
-.btn-abrir{
-    background-color: #d4af37;
-    color:#5c1418;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-family:Georgia, serif;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
-}
-
-.btn-voltar{
-    background-color: transparent;
-    color: var(--texto-destaque);
-    border: 1px solid var(--texto-destaque);
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    font-family: Georgia,serif;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 03s ease;
-}
+/* ==========================================================================
+   1. VARIÁVEIS DE CORES (Skins das Casas)
+   --------------------------------------------------------------------------
+   Aqui usamos "custom properties" (variáveis CSS) para definir uma paleta
+   de cores. O bloco ":root" define a skin PADRÃO, usada quando nenhuma
+   classe de casa foi escolhida ainda.
+   As classes ".skin-grifinoria", ".skin-sonserina", ".skin-corvinal" e
+   ".skin-lufa-lufa" SOBRESCREVEM essas mesmas variáveis quando aplicadas
+   ao elemento ".container" (via JavaScript, função mudarCasa()).
+   Como o restante do CSS usa var(--nome-da-variavel) em vez de cores fixas,
+   basta trocar a classe no HTML para toda a interface mudar de cor.
+   ========================================================================== */
 :root {
-    /* Skin Padrão */
+    /* Skin Padrão (Estilo Inicial / Grifinória Soft) */
     --bg-principal: #f4ebd0;   /* Cor de fundo do "livro" (card principal) */
     --bg-leitor: #fffaf0;      /* Cor de fundo da caixa onde o conto é lido */
     --texto-principal: #3e2723; /* Cor do texto padrão (marrom escuro) */
@@ -92,20 +44,19 @@ box-sizing: border-box;
     --btn-texto: #3e2723;       /* Cor do texto dos botões do menu de contos */
 }
 
-
-/* Skin apollo (Vermelho e Ouro) */
-.skin-apollo {
-    --bg-principal: #FFD6B2;
-    --bg-leitor: #FFB280;
+/* Skin Grifinória (Vermelho e Ouro) */
+.skin-grifinoria {
+    --bg-principal: #f5ebd2;
+    --bg-leitor: #fffbfa;
     --texto-principal: #3a0007;
-    --texto-destaque: #c7b510;
+    --texto-destaque: #850614;
     --borda-ouro: #d4af37;
     --btn-bg: #e0a96d;
     --btn-texto: #3a0007;
 }
 
-/* Skin Athena (azul e Prata) */
-.skin-athena {
+/* Skin Sonserina (Verde e Prata) */
+.skin-sonserina {
     --bg-principal: #d2f5e3;
     --bg-leitor: #f4fbf7;
     --texto-principal: #0b2f1d;
@@ -115,8 +66,8 @@ box-sizing: border-box;
     --btn-texto: #0b2f1d;
 }
 
-/* Skin hermes (verde e Bronze/Ouro) */
-.skin-hermes {
+/* Skin Corvinal (Azul e Bronze/Ouro) */
+.skin-corvinal {
     --bg-principal: #d2e4f5;
     --bg-leitor: #f4f8fb;
     --texto-principal: #0d1b2a;
@@ -126,8 +77,8 @@ box-sizing: border-box;
     --btn-texto: #0d1b2a;
 }
 
-/* Skin afrodite (rosa e prata) */
-.skin-afrodite {
+/* Skin Lufa-Lufa (Amarelo e Preto) */
+.skin-lufa-lufa {
     --bg-principal: #fbf3be;
     --bg-leitor: #fffdf2;
     --texto-principal: #1f1f1e;
@@ -137,3 +88,324 @@ box-sizing: border-box;
     --btn-texto: #1f1f1e;
 }
 
+
+/* ==========================================================================
+   2. ESTILOS GERAIS
+   --------------------------------------------------------------------------
+   Define o fundo escuro/mágico da página (fora do "livro") e centraliza
+   todo o conteúdo na tela, tanto na horizontal quanto na vertical.
+   ========================================================================== */
+body {
+    font-family: 'Georgia', serif; /* Fonte serifada para dar clima de livro antigo */
+    background-color: #120e0a;     /* Cor de fallback caso o gradiente não carregue */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;   /* Centraliza horizontalmente */
+    align-items: center;       /* Centraliza verticalmente */
+    min-height: 100vh;         /* Ocupa a tela inteira */
+    /* Gradiente radial que simula uma iluminação suave ao centro da página */
+    background-image: radial-gradient(circle, rgba(40,30,20,1) 0%, rgba(10,8,5,1) 100%);
+}
+
+
+/* ==========================================================================
+   3. ESTILO DA CAPA (CARÁTULA)
+   --------------------------------------------------------------------------
+   Estilos da tela inicial, exibida antes de o usuário clicar em
+   "Abrir Livro". É um cartão vermelho/dourado centralizado na tela.
+   ========================================================================== */
+.capa-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.capa-livro {
+    background-color: #5c1418;              /* Vermelho escuro de "capa de couro" */
+    color: #d4af37;                          /* Texto dourado */
+    padding: 50px 40px;
+    border-radius: 10px;
+    border: 5px double #d4af37;              /* Borda dupla dourada, efeito clássico */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9); /* Sombra profunda para dar volume */
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.5s ease; /* Suaviza qualquer mudança futura de estilo */
+}
+
+/* Símbolo decorativo das Relíquias da Morte no topo da capa */
+.simbolo-reliquias {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: #d4af37;
+    opacity: 0.9;
+    letter-spacing: 5px;
+}
+
+.capa-livro h1 {
+    font-size: 2.4rem;
+    margin: 10px 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.capa-livro .subtitulo {
+    font-size: 1.1rem;
+    color: #e6ccb2;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.capa-livro .creditos {
+    font-size: 0.85rem;
+    color: #b1977a;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+    padding-top: 15px;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+/* Botão "Abrir Livro" da capa */
+.btn-abrir {
+    background-color: #d4af37;
+    color: #5c1418;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o botão de abrir o livro */
+.btn-abrir:hover {
+    background-color: #f4ebd0;
+    transform: scale(1.05); /* Leve "zoom" no botão */
+    box-shadow: 0 8px 25px rgba(212,175,55,0.5);
+}
+
+
+/* ==========================================================================
+   4. ESTILO DA PÁGINA INTERNA (Livro Aberto)
+   --------------------------------------------------------------------------
+   Estilos do "livro" propriamente dito: o cartão claro que aparece depois
+   de clicar em "Abrir Livro ✨". Usa as variáveis de cor (--bg-principal,
+   --texto-principal etc.) para poder trocar de skin dinamicamente.
+   ========================================================================== */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border: 3px double var(--borda-ouro);
+    box-sizing: border-box;
+    position: relative;
+    /* Transições suaves ao trocar de skin (casa de Hogwarts) */
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+/* --------------------------------------------------------------------
+   4.1 Cabeçalho interno: linha com o botão "Fechar Livro" à esquerda
+   e o seletor de skins das casas à direita.
+   -------------------------------------------------------------------- */
+.topo-acoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Quebra linha em telas pequenas */
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--btn-bg);
+    padding-bottom: 15px;
+}
+
+.btn-voltar {
+    background-color: transparent;
+    color: var(--texto-destaque);
+    border: 1px solid var(--texto-destaque);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background-color: var(--texto-destaque);
+    color: var(--bg-principal);
+}
+
+/* --------------------------------------------------------------------
+   4.2 Seletor de Skins das Casas: grupo com as 4 bolinhas coloridas
+   que permitem trocar o tema visual do livro.
+   -------------------------------------------------------------------- */
+.seletor-casas {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.seletor-casas span {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--texto-principal);
+}
+
+/* Botão redondo (bolinha) representando cada casa */
+.btn-skin {
+    border: 2px solid #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Deixa o botão perfeitamente redondo */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.btn-skin:hover {
+    transform: scale(1.15); /* Pequeno destaque ao passar o mouse */
+}
+
+/* Cores fixas de cada bolinha de seleção (independem da skin ativa) */
+.skin-grif { background-color: #850614; border-color: #d4af37; }
+.skin-son  { background-color: #1a472a; border-color: #aaaaaa; }
+.skin-corv { background-color: #0e1d53; border-color: #cd7f32; }
+.skin-lufa { background-color: #e3b20d; border-color: #373737; }
+
+/* --------------------------------------------------------------------
+   4.3 Cabeçalho do conteúdo: título principal e subtítulo explicativo.
+   -------------------------------------------------------------------- */
+header {
+    text-align: center;
+    border-bottom: 2px dashed var(--btn-bg);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 5px 0 0 0;
+    color: var(--texto-destaque);
+    transition: color 0.5s ease;
+}
+
+header p {
+    font-style: italic;
+    color: var(--texto-principal);
+    opacity: 0.8;
+    margin: 5px 0 0 0;
+}
+
+/* --------------------------------------------------------------------
+   4.4 Layout em Grelha: organiza o menu de contos e a área de leitura
+   lado a lado em telas maiores, e empilhados em telas pequenas.
+   -------------------------------------------------------------------- */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Em telas pequenas, uma única coluna */
+    gap: 30px;
+}
+
+/* A partir de 650px de largura, menu e leitor ficam lado a lado */
+@media (min-width: 650px) {
+    .main-content {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------
+   4.5 Menu de Contos: lista vertical de botões, um para cada história.
+   -------------------------------------------------------------------- */
+.menu-contos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-conto {
+    background-color: var(--btn-bg);
+    color: var(--btn-texto);
+    border: 1px solid var(--borda-ouro);
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Estado de hover e de conto atualmente selecionado (classe "active" via JS) */
+.btn-conto:hover, .btn-conto.active {
+    background-color: var(--texto-destaque);
+    color: var(--bg-leitor);
+    border-color: var(--texto-destaque);
+    transform: translateX(5px); /* Pequeno deslocamento para a direita */
+}
+
+/* --------------------------------------------------------------------
+   4.6 Área de Leitura: caixa onde aparece o título e o resumo do
+   conto selecionado.
+   -------------------------------------------------------------------- */
+.leitor-conto {
+    background-color: var(--bg-leitor);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid var(--borda-ouro);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Sombra interna sutil */
+    min-height: 250px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.leitor-conto h2 {
+    margin-top: 0;
+    color: var(--texto-destaque);
+    font-size: 1.8rem;
+}
+
+.leitor-conto p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* --------------------------------------------------------------------
+   4.7 Nota de Dumbledore: comentário extra exibido abaixo do resumo
+   do conto, com estilo diferenciado (itálico) para simular uma nota
+   de rodapé escrita à mão.
+   -------------------------------------------------------------------- */
+.nota-alvo {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--borda-ouro);
+    font-style: italic;
+    color: var(--texto-principal);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------
+   4.8 Rodapé do livro aberto.
+   -------------------------------------------------------------------- */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.85rem;
+    color: var(--texto-principal);
+    opacity: 0.7;
+    border-top: 1px solid var(--btn-bg);
+    padding-top: 15px;
+}

@@ -1,0 +1,139 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5c1418;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.capa-livro h1{
+   
+    width: 320px;
+    padding: 60px 30px;
+    background-color: antiquewhite;
+    border:2px solid #c8a24a ;
+    border-radius: 8px;
+    text-align: center;
+    
+   }
+.capa-livro{
+ background-color: #5c1418;
+ padding: 50px 40px;
+ border-radius: 10px;
+ border: 5px double #d4af37;
+ box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+ text-align: center;
+ max-width: 450px;
+ width: 100%;
+ box-sizing:border-box;
+ transition: all 0.5sease;
+}
+
+.capa-container{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+padding: 20px;
+box-sizing: border-box;
+
+}
+
+.container{
+    width: 90%;
+    max-width: 900px;
+    background-color: var(--bg-principal);
+    color: var(--texto-prinicpal);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    border: 3px double var(--borda-ouro);
+    box-sizing: border-box;
+    position: relative;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color ease ;
+
+}
+
+.btn-abrir{
+    background-color: #d4af37;
+    color:#5c1418;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family:Georgia, serif;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-voltar{
+    background-color: transparent;
+    color: var(--texto-destaque);
+    border: 1px solid var(--texto-destaque);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-family: Georgia,serif;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 03s ease;
+}
+:root {
+    /* Skin Padrão */
+    --bg-principal: #f4ebd0;   /* Cor de fundo do "livro" (card principal) */
+    --bg-leitor: #fffaf0;      /* Cor de fundo da caixa onde o conto é lido */
+    --texto-principal: #3e2723; /* Cor do texto padrão (marrom escuro) */
+    --texto-destaque: #782024;  /* Cor de títulos e destaques */
+    --borda-ouro: #d4af37;      /* Cor das bordas decorativas (dourado) */
+    --btn-bg: #e6ccb2;          /* Cor de fundo dos botões do menu de contos */
+    --btn-texto: #3e2723;       /* Cor do texto dos botões do menu de contos */
+}
+
+
+/* Skin apollo (Vermelho e Ouro) */
+.skin-apollo {
+    --bg-principal: #FFD6B2;
+    --bg-leitor: #FFB280;
+    --texto-principal: #3a0007;
+    --texto-destaque: #c7b510;
+    --borda-ouro: #d4af37;
+    --btn-bg: #e0a96d;
+    --btn-texto: #3a0007;
+}
+
+/* Skin Athena (azul e Prata) */
+.skin-athena {
+    --bg-principal: #d2f5e3;
+    --bg-leitor: #f4fbf7;
+    --texto-principal: #0b2f1d;
+    --texto-destaque: #1a472a;
+    --borda-ouro: #aaaaaa; /* Prata */
+    --btn-bg: #8bbfa3;
+    --btn-texto: #0b2f1d;
+}
+
+/* Skin hermes (verde e Bronze/Ouro) */
+.skin-hermes {
+    --bg-principal: #d2e4f5;
+    --bg-leitor: #f4f8fb;
+    --texto-principal: #0d1b2a;
+    --texto-destaque: #0e1d53;
+    --borda-ouro: #cd7f32; /* Bronze */
+    --btn-bg: #90b3d6;
+    --btn-texto: #0d1b2a;
+}
+
+/* Skin afrodite (rosa e prata) */
+.skin-afrodite {
+    --bg-principal: #fbf3be;
+    --bg-leitor: #fffdf2;
+    --texto-principal: #1f1f1e;
+    --texto-destaque: #e3b20d;
+    --borda-ouro: #373737; /* Preto/Carvão */
+    --btn-bg: #e8db7d;
+    --btn-texto: #1f1f1e;
+}
+

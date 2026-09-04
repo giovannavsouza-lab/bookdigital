@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabbin 17 - Mitos</title>
+    
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    
+    <div id="tela-capa" class="capa-container">
+        <div class="capa-livro">
+            <h1>Cabbin 17</h1>
+            <p>mitos</p>
+            <button class="btn-abrir" onclick="abrirLivro()">Abrir Livro</button>
+        </div>
+    </div>
+
+    <div id="tela-principal" class="container" style="display: none;">
+        
+        <div class="topo-acoes">
+            <button class="btn-voltar" onclick="voltarInicio()">Voltar</button>
+            
+            <div class="seletor-casas">
+                <span>Sua benção:</span>
+                <button class="btn-skin skin-apo" title="Apollo" onclick="mudarDeus('skin-apollo')"></button>
+                <button class="btn-skin skin-ath" title="Athena" onclick="mudarDeus('skin-athenas')"></button>
+                <button class="btn-skin skin-her" title="Hermes" onclick="mudarDeus('skin-hermes')"></button>
+                <button class="btn-skin skin-afro" title="Afrodite" onclick="mudarDeus('skin-afrodite')"></button>
+            </div>
+        </div>
+
+        <header>
+            <h1 id="tituloPrincipal">Cabbin 17</h1>
+            <p>Selecione um mito para iniciar a leitura</p>
+        </header>
+
+        <div class="main-content">
+            
+            <div class="menu-contos" id="menuContos"></div>
+
+            <div class="leitor-conto" id="leitorConto">
+                <h2 id="contoTitulo">Selecione uma história</h2>
+                <p id="contoTexto">Clique em um dos mitos ao lado para ler a sua história e biografia.</p>
+                <div id="contoNota" class="nota-alvo" style="display: none;"></div>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p>Cabbin 17 • Acampamento Meio-Sangue</p>
+        </footer>
+
+    </div>
+   
+    <script src="./js/script.js"></script>
+</body>  
+</html>
