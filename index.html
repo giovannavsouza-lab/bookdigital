@@ -7,17 +7,27 @@
     <title>teste teste</title>
 </head> 
 <body>
+    <!-- TELA DA capa -->
     <div id="tela-capa" class="capa-container">
 <div class="capa-livro">
-    <h1>os contos de bleedle</h1>
+    <h1>Cabbin 17</h1>
     <p>mitos</p>
     <button class="btn-abrir" onclick="abrirLivro()">Abrir Livro</button>
     </div>
     </div>
 
+    <!-- TELA DA inicial -->
+
     <div id="tela-principal" class="container" style="display: none;">
     <div class="topo-acoes">
         <button class="btn-voltar" onclick="voltarInicio()">Voltar</button>
+        <div class="seletor-casas">
+                <span>Sua benção:</span>
+                <button class="btn-skin skin-apo" title="Apollo" onclick="mudarDeus('skin-apollo')"></button>
+                <button class="btn-skin skin-ath" title="Athena" onclick="mudarDeus('skin-athenas')"></button>
+                <button class="btn-skin skin-her" title="Hermes" onclick="mudarDeus('skin-hermes')"></button>
+                <button class="btn-skin skin-afro" title="Afrodite" onclick="mudarDeus('skin-afrodite')"></button>
+            </div>
     </div>
     </div>
    
