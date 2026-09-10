@@ -7,25 +7,18 @@ function voltarInicio(){
     document.getElementById("tela-principal").style.display = "none";
     document.getElementById("tela-capa").style.display = "flex";
 
-     mudarDeus(''); // Reseta os textos
-
-   /* document.getElementById("contoTitulo").innerText = "Selecione uma história";
-    document.getElementById("contoTexto").innerText = "Clique em um dos contos clássicos ao lado para ler o resumo e as observações arquivadas por Hogwarts.";
-    document.getElementById("contoNota").style.display = "none";*/
+     mudarDeus(''); 
 
     const botoes = document.querySelectorAll(".btn-conto");
     botoes.forEach(b => b.classList.remove("active"));
 }
-/* = 2. troca das skins dos deuses = */
 
 function mudarDeus(nomeDaSkin) {
     const container = document.getElementById("tela-principal");
 
-    // Remove qualquer classe de skin ativa anteriormente,
-    // voltando o elemento para apenas a classe base ".container"
     container.className = "container";
 
-    // Adiciona a nova classe de skin selecionada (se houver alguma)
+    
     container.classList.add(nomeDaSkin);
 }
 
@@ -62,7 +55,7 @@ function mudarDeus(nomeDaSkin) {
 }
 function carregarMenu() {
     const menuContainer = document.getElementById("menuContos");
-    menuContainer.innerHTML = ""; // Limpa o menu antes de recriá-lo
+    menuContainer.innerHTML = "";
 
     contos.forEach(conto => {
         const botao = document.createElement("button");
@@ -84,7 +77,7 @@ function exibirConto(id, botaoSelecionado) {
         notaDiv.innerText = conto.nota;
         notaDiv.style.display = "block";
 
-        // Remove o destaque de todos os botões e aplica apenas no selecionado
+       
         const botoes = document.querySelectorAll(".btn-conto");
         botoes.forEach(b => b.classList.remove("active"));
         botaoSelecionado.classList.add("active");
