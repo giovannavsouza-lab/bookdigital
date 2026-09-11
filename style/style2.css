@@ -45,7 +45,7 @@ box-sizing: border-box;
     width: 90%;
     max-width: 900px;
     background-color: var(--bg-principal);
-    color: var(--texto-prinicpal);
+    color: var(--texto-principal);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.7);

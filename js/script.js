@@ -7,19 +7,18 @@ function voltarInicio(){
     document.getElementById("tela-principal").style.display = "none";
     document.getElementById("tela-capa").style.display = "flex";
 
-     mudarDeus(''); 
-
     const botoes = document.querySelectorAll(".btn-conto");
     botoes.forEach(b => b.classList.remove("active"));
 }
 
 function mudarDeus(nomeDaSkin) {
     const container = document.getElementById("tela-principal");
-
+  
     container.className = "container";
-
     
-    container.classList.add(nomeDaSkin);
+    if (nomeDaSkin) {
+        container.classList.add(nomeDaSkin);
+    }
 }
 
 const contos = [
