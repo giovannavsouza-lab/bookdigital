@@ -45,36 +45,12 @@ const contos = [
 },
 ];
 
-function mudarDeus(nomeDaSkin) {
-    const container = document.getElementById("tela-principal");
-
-    container.className = "container";
-
-    container.classList.add(nomeDaSkin);
-}
-function carregarMenu() {
-    const menuContainer = document.getElementById("menuContos");
-    menuContainer.innerHTML = "";
-
-    contos.forEach(conto => {
-        const botao = document.createElement("button");
-        botao.classList.add("btn-conto");
-        botao.innerText = conto.titulo;
-        botao.onclick = () => exibirConto(conto.id, botao);
-        menuContainer.appendChild(botao);
-    });
-}
-
 function exibirConto(id, botaoSelecionado) {
     const conto = contos.find(c => c.id === id);
 
     if (conto) {
         document.getElementById("contoTitulo").innerText = conto.titulo;
         document.getElementById("contoTexto").innerText = conto.resumo;
-
-        const notaDiv = document.getElementById("contoNota");
-        notaDiv.innerText = conto.nota;
-        notaDiv.style.display = "block";
 
        
         const botoes = document.querySelectorAll(".btn-conto");
