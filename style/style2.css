@@ -8,6 +8,7 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+
 .capa-livro h1{
    
     width: 320px;
@@ -16,7 +17,7 @@ body{
     border:2px solid #c8a24a ;
     border-radius: 8px;
     text-align: center;
-    
+   
    }
 .capa-livro{
  background-color: #5c1418;
@@ -28,8 +29,9 @@ body{
  max-width: 450px;
  width: 100%;
  box-sizing:border-box;
- transition: all 0.5s ease
+ transition: all 0.5sease;
 }
+
 
 .capa-container{
 display: flex;
@@ -39,7 +41,9 @@ width: 100%;
 padding: 20px;
 box-sizing: border-box;
 
+
 }
+
 
 .container{
     width: 90%;
@@ -52,9 +56,11 @@ box-sizing: border-box;
     border: 3px double var(--borda-ouro);
     box-sizing: border-box;
     position: relative;
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color ease ;
+
 
 }
+
 
 .btn-abrir{
     background-color: #d4af37;
@@ -69,6 +75,7 @@ box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
 }
+
 
 .btn-voltar{
     background-color: transparent;
@@ -93,6 +100,8 @@ box-sizing: border-box;
 }
 
 
+
+
 /* Skin apollo (Vermelho e Ouro) */
 .skin-apollo {
     --bg-principal: #FFD6B2;
@@ -104,8 +113,9 @@ box-sizing: border-box;
     --btn-texto: #3a0007;
 }
 
+
 /* Skin Athena (azul e Prata) */
-.skin-athena {
+.skin-ath{
     --bg-principal: #d2f5e3;
     --bg-leitor: #f4fbf7;
     --texto-principal: #0b2f1d;
@@ -115,8 +125,9 @@ box-sizing: border-box;
     --btn-texto: #0b2f1d;
 }
 
+
 /* Skin hermes (verde e Bronze/Ouro) */
-.skin-hermes {
+.skin-her {
     --bg-principal: #d2e4f5;
     --bg-leitor: #f4f8fb;
     --texto-principal: #0d1b2a;
@@ -126,8 +137,9 @@ box-sizing: border-box;
     --btn-texto: #0d1b2a;
 }
 
+
 /* Skin afrodite (rosa e prata) */
-.skin-afrodite {
+.skin-afro {
     --bg-principal: #fbf3be;
     --bg-leitor: #fffdf2;
     --texto-principal: #1f1f1e;
@@ -136,4 +148,8 @@ box-sizing: border-box;
     --btn-bg: #e8db7d;
     --btn-texto: #1f1f1e;
 }
+
+
+
+
 
